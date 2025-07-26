@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name // Your Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 50%, #dc3545 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.15),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 4px solid #2c2c2c;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .header {
+            margin-bottom: 60px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            margin: 0 auto 40px auto;
+            display: block;
+            border: 3px solid #2c2c2c;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ff6b6b, transparent);
+            margin: 40px 0;
+        } 
+
+        .section:last-child::after {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #dc3545;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #dc3545;
+            padding-bottom: 8px;
+            display: inline-block;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #ff6b6b;
+            margin-top: 5px;
+        }
+
+        .about-text {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 0;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .work-intro {
+            font-size: 1em;
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 30px;
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border: 2px solid #ff6b6b;
+            text-align: center;
+        }
+
+        .company-section {
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #2c2c2c;
+            box-shadow: 4px 4px 0px rgba(44, 44, 44, 0.3);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .company-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-section::before {
+            content: '■';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #dc3545;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .company-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .company-description {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #ff6b6b;
+        }
+
+        .role-item {
+            margin-bottom: 8px;
+            font-size: 1em;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+
+        .date-range {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            background: #2c2c2c;
+            color: #ff6b6b;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .project-intro {
+            font-size: 1em;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+            font-style: italic;
+        }
+
+        .project-item {
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #2c2c2c;
+            box-shadow: 4px 4px 0px rgba(44, 44, 44, 0.3);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .project-item::before {
+            content: '◆';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #ff6b6b;
+            font-size: 1.5em;
+        }
+
+        .project-link {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #a71e2a;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .project-link:focus {
+            outline: 2px solid #ff6b6b;
+            outline-offset: 2px;
+        }
+
+        .project-meta {
+            font-size: 0.95em;
+            color: #6c757d;
+            margin-bottom: 15px;
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ff6b6b;
+            display: inline-block;
+        }
+
+        .project-description {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-image {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #2c2c2c;
+            box-shadow: 2px 2px 0px rgba(44, 44, 44, 0.3);
+        }
+
+        .reading-intro {
+            font-size: 1em;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            font-style: italic;
+        }
+
+        .book-item {
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .book-item::before {
+            content: '▲';
+            color: #000;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .book-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .book-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .book-link:hover {
+            color: #0ca7e5;
+        }
+
+        .book-link:hover::after {
+            width: 100%;
+        }
+
+        .book-link:focus {
+            outline: 2px solid #ff6b6b;
+            outline-offset: 2px;
+        }
+
+        .book-author {
+            color: #6c757d;
+            font-weight: normal;
+        }
+
+        .side-quests-content {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #2c2c2c;
+            box-shadow: 4px 4px 0px rgba(44, 44, 44, 0.3);
+            position: relative;
+        }
+
+        .side-quests-content::before {
+            content: '●';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5em;
+            color: #ff6b6b;
+        }
+
+        .quest-category {
+            margin-bottom: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #ff6b6b;
+        }
+
+        .quest-category strong {
+            font-weight: 700;
+            color: #dc3545;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fun-fact {
+            margin-top: 20px;
+            font-style: italic;
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ff6b6b;
+        }
+
+        .fun-fact a {
+            color: #dc3545;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .project-images {
+                flex-direction: column;
+            }
+            
+            .project-image {
+                max-width: 100%;
+            }
+
+            .social-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  background-color: #ff6b6b;
+  padding: 12px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.social-nav {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.social-nav a {
+  display: inline-block;
+  margin: 0 0.75rem;
+  color: #ff6b6b;
+  font-size: 1.8rem;
+}
+
+
+ }
+/* Custom underline for Personal Projects section */
+#projects-toggle.section-title::after {
+    width: 16px;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b6b 60%, transparent 100%);
+    margin-top: 5px;
+    display: block;
+    border-radius: 2px;
+    content: '';
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Photo -->
+        <div class="header">
+            <img src="profile-image.png" alt="Profile Photo" class="profile-image">
+</div>
+        
+ <!-- Social Navigation Bar -->
+  <div>
+    <nav class="social-nav">
+    <a href="https://x.com/philbiee" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://instagram.com/philbiee"  target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com/in/philipmurtagh" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </nav>
+</div>
+        
+
+
+        <!-- About Section -->
+        <section class="section">
+            <h2 class="section-title">About</h2>
+            <p class="about-text">
+                <b>Currently I am:</b>  A Partner Operations Release Manager at Epic Games. Specializing in managing end-to-end release operations for game studios on the Epic Games Store. I blend account management, and release management to ensure smooth product launches by coordinating across multiple teams, from Marketing and Business Development to Technical Account Management.            </p>
+            <br>
+            <p class="about-text">
+                <b>Previously I was:</b> In the startup space helping to grow customer support teams and assisting and triaging customer pain point and providing feedback to the appropriate teams. A few of the startups I worked with were PandaDoc and Airtable.             </p>
+            <br>
+            <p class="about-text">
+                <b>Before That:</b> I was the Listing Manager at Vested Business Brokers where I partnered with Brokers, Buyers and Sellers to help facilitate the purchase and sale of small businesses. I was also in charge of managing the product of the business (i.e Listings) and marketing them across various websites, and ingesting them into the backend software to showcase to customers. I was also the direct assistant to the CEO. 
+            </p>
+        </section>
+
+        <!-- Work Section -->
+        <section class="section">
+            <h2 class="section-title">Work</h2>
+            <p class="work-intro">Formal resume available upon request</p>
+            
+            <div class="company-section">
+                <h3 class="company-name">Current Company</h3>
+                <div class="role-item">
+                    <span class="role-title">Senior Position Title</span> <span class="date-range">(Month 2023 to Present)</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Previous Position Title</span> <span class="date-range">(Month 2021 to Month 2023)</span>
+                </div>
+                <p class="company-description">
+                    I currently work on exciting projects spanning multiple areas of expertise. My responsibilities include developing strategic initiatives, managing cross-functional collaborations, leading key partnerships, and driving innovation across various product lines. A majority of my day includes strategic planning, stakeholder communication, project management, and analyzing performance metrics. I also collaborate with international teams and manage external partnerships.
+                </p>
+            </div>
+
+            <div class="company-section">
+                <h3 class="company-name">Previous Company</h3>
+                <div class="role-item">
+                    <span class="role-title">Previous Role Title</span> <span class="date-range">(Month 2018 to Month 2021)</span>
+                </div>
+                <p class="company-description">
+                    After starting as an intern and gaining valuable industry experience, I returned full-time for several years. I advanced quickly within the organization, starting on the regional team and eventually leading international initiatives. I found myself working on multiple high-profile projects, including major product launches, strategic partnerships, and innovative campaigns that drove significant business impact.
+                </p>
+            </div>
+
+            <div class="company-section">
+                <h3 class="company-name">Agency/Early Career</h3>
+                <div class="role-item">
+                    <span class="role-title">Account Coordinator</span> <span class="date-range">(Month 2016 to Month 2017)</span>
+                </div>
+                <p class="company-description">
+                    At this leading agency, I supported major clients across various industries. My first week on the job involved working on a high-profile launch that became a defining moment in my career - from developing content to managing stakeholder communications, working on this project was an unforgettable experience that shaped my professional approach.
+                </p>
+            </div>
+        </section>
+
+        <!-- Personal Projects Section -->
+        <section class="section" style="position:relative;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom: -10px; position:relative;">
+                <h2 class="section-title" id="projects-toggle" style="cursor:pointer; user-select:none; display:flex; align-items:center; gap:10px; position:relative;">
+                    <span id="projects-arrow" style="transition: transform 0.3s; display:inline-block;">▼</span> Personal Projects
+                    <span id="clickme-label" style="display:flex; flex-direction:column; align-items:center; margin-left:14px;">
+                        <span style="font-size:0.95em; color:#ff6b6b; font-weight:bold; margin-bottom:2px; background:#fffbe9; padding:2px 8px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">Click Me</span>
+                        <svg width="38" height="28" viewBox="0 0 38 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                            <path d="M32 6 Q18 18 8 16" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M10 15 L8 16 L10 18" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </h2>
+            </div>
+            <div id="projects-collapsible">
+                <!-- Removed project-intro paragraph as requested -->
+                <div class="project-item">
+                    <a href="#" class="project-link">Project Name One</a>
+                    <p class="project-meta">Built with [Technology], published [Date]</p>
+                    <p class="project-description">
+                        A brief description of what this project does and why you created it. Explain the problem it solves, your approach to building it, and what you learned in the process. This project takes about X minutes to complete, and demonstrates your skills in [specific area].
+                    </p>
+                    <p class="project-description">
+                        In this project I dove deeper into [specific technology or skill] and learned more advanced techniques. This was particularly challenging/rewarding because [specific reason].
+                    </p>
+                    <div class="project-images">
+                        <img src="https://via.placeholder.com/200x150/3498db/ffffff?text=Project+1" alt="Project Screenshot" class="project-image">
+                        <img src="https://via.placeholder.com/200x150/e74c3c/ffffff?text=Project+1" alt="Project Screenshot" class="project-image">
+                    </div>
+                </div>
+                <div class="project-item">
+                    <a href="#" class="project-link">Project Name Two</a>
+                    <p class="project-meta">Built with [Technology], published [Date]</p>
+                    <p class="project-description">
+                        Description of your second project. Explain what makes this project unique and what role you played if it was collaborative. Highlight any specific challenges you overcame or new skills you developed while working on this.
+                    </p>
+                    <p class="project-description">
+                        I worked with a small team for this project. My role was [your specific role], where I handled tasks such as [specific responsibilities]. I also brought my professional experience into the project by [specific contribution].
+                    </p>
+                </div>
+                <div class="project-item">
+                    <a href="#" class="project-link">Project Name Three</a>
+                    <p class="project-meta">Built with [Technology], published [Date]</p>
+                    <p class="project-description">
+                        A short description of another project that showcases different skills or interests. Mention the duration and what makes it special to you.
+                    </p>
+                    <p class="project-description">
+                        This was a solo project — and my first project! I taught myself [specific tool/technology] and implemented some creative solutions to add more functionality.
+                    </p>
+                    <div class="project-images">
+                        <img src="https://via.placeholder.com/200x150/9b59b6/ffffff?text=Project+3" alt="Project Screenshot" class="project-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading List Section -->
+        <section class="section">
+            <h2 class="section-title">Reading List</h2>
+            <p class="reading-intro">
+                A growing list of books I've been reading or have recently read. These books have helped me in my career but I've also personally enjoyed. More to come!
+            </p>
+            
+            <div class="book-item">
+                <a href="#" class="book-link">Book Title One: Subtitle Here</a><br>
+                <span class="book-author">by Author Name</span>
+            </div>
+            
+            <div class="book-item">
+                <a href="#" class="book-link">Book Title Two: Subtitle Here</a><br>
+                <span class="book-author">by Author Name</span>
+            </div>
+            
+            <div class="book-item">
+                <a href="#" class="book-link">Book Title Three: Subtitle Here</a><br>
+                <span class="book-author">by Author Name</span>
+            </div>
+            
+            <div class="book-item">
+                <a href="#" class="book-link">Book Title Four: Subtitle Here</a><br>
+                <span class="book-author">by Author Name</span>
+            </div>
+        </section>
+
+        <!-- Side Quests Section -->
+        <section class="section">
+            <h2 class="section-title">Side Quests</h2>
+            <div class="side-quests-content">
+                <div class="quest-category">
+                    <strong>What I'm playing:</strong> List your current games, hobbies, or activities you're engaged with
+                </div>
+                
+                <div class="quest-category">
+                    <strong>What I'm watching:</strong> Current shows, movies, documentaries, or content you're enjoying, including any specific genres or themes you're drawn to
+                </div>
+                
+                <div class="quest-category">
+                    <strong>Other things that keep me busy:</strong> photography, collecting vinyl, board games, cooking, spending time with pets, hosting events, martial arts, running, outdoor activities, fitness pursuits, and other hobbies that bring you joy
+                </div>
+                
+                <p class="fun-fact">
+                    (Fun fact: Include an interesting personal achievement or story here! <a href="#">HERE's</a> a link to something cool you've done.)
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+// Collapsible Personal Projects Section
+const toggle = document.getElementById('projects-toggle');
+const collapsible = document.getElementById('projects-collapsible');
+const arrow = document.getElementById('projects-arrow');
+let collapsed = false;
+
+function setCollapsed(state) {
+    collapsed = state;
+    if (collapsed) {
+        collapsible.style.maxHeight = '0';
+        collapsible.style.overflow = 'hidden';
+        collapsible.style.transition = 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)';
+        arrow.style.transform = 'rotate(-90deg)';
+    } else {
+        collapsible.style.maxHeight = collapsible.scrollHeight + 'px';
+        collapsible.style.overflow = 'visible';
+        collapsible.style.transition = 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)';
+        arrow.style.transform = 'rotate(0deg)';
+    }
+}
+
+// Initial state: expanded
+setCollapsed(false);
+
+// Toggle on click
+if (toggle) {
+    toggle.addEventListener('click', () => {
+        setCollapsed(!collapsed);
+    });
+}
+
+// If new items are added dynamically, call setCollapsed(collapsed) again to update maxHeight
+// Example: after adding a new project-item, call setCollapsed(collapsed);
+</script>
+</html>
